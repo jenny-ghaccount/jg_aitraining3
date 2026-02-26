@@ -1,92 +1,23 @@
-
-# Epics
-
-- Task Due Dates
-- Task Prioritization
-- Task Filtering
-- Local Data Storage
-- Overdue Task Highlighting
-- Priority Badges
-- Task Sorting
-
-# Stories
-
-## Task Due Dates
-- Add due date field to task model
-  - Acceptance Criteria:
-    - Task model includes an optional `dueDate` property in ISO `YYYY-MM-DD` format
-    - Existing tasks remain valid if `dueDate` is not set
-  - Technical Requirements: _TBD_
-- Display due date in task list
-  - Acceptance Criteria:
-    - Due date is shown for each task that has one
-    - Tasks without a due date do not display an empty or placeholder value
-  - Technical Requirements: _TBD_
-
-## Task Prioritization
-- Add priority field to task model
-  - Acceptance Criteria:
-    - Task model includes a `priority` property with values `P1`, `P2`, or `P3`
-    - Default priority for new tasks is `P3`
-  - Technical Requirements: _TBD_
-- Display priority in task list
-  - Acceptance Criteria:
-    - Priority is shown for each task as a label or badge
-    - Priority is visually distinct for each level
-  - Technical Requirements: _TBD_
-
-## Task Filtering
-- Add filter for all tasks
-  - Acceptance Criteria:
-    - User can view all tasks regardless of due date or completion
-  - Technical Requirements: _TBD_
-- Add filter for today’s tasks
-  - Acceptance Criteria:
-    - User can view only tasks due today
-    - Tasks without a due date are excluded from this view
-  - Technical Requirements: _TBD_
-- Add filter for overdue tasks
-  - Acceptance Criteria:
-    - User can view only tasks with a due date before today and not completed
-    - Overdue filter excludes completed tasks
-  - Technical Requirements: _TBD_
-
-## Local Data Storage
-- Store tasks locally on device
-  - Acceptance Criteria:
-    - All task data is stored in the browser (e.g., localStorage or IndexedDB)
-    - No backend or external storage is used
-    - Tasks persist after page reload
-  - Technical Requirements: _TBD_
-
-## Overdue Task Highlighting
-- Visually highlight overdue tasks
-  - Acceptance Criteria:
-    - Overdue tasks are visually distinct (e.g., red highlight or border)
-    - Only tasks with a due date before today and not completed are highlighted
-  - Technical Requirements: _TBD_
-
-## Priority Badges
-- Add color-coded badges for priorities
-  - Acceptance Criteria:
-    - P1 tasks have a red badge, P2 orange, P3 gray
-    - Badges are visible in the task list
-  - Technical Requirements: _TBD_
-
-## Task Sorting
-- Sort tasks by overdue status
-  - Acceptance Criteria:
-    - Overdue tasks appear at the top of the list
-  - Technical Requirements: _TBD_
-- Sort tasks by priority
-  - Acceptance Criteria:
-    - Within each group (overdue, not overdue), tasks are sorted by priority (P1 first, then P2, then P3)
-  - Technical Requirements: _TBD_
-- Sort tasks by due date
-  - Acceptance Criteria:
-    - Within each priority, tasks are sorted by due date in ascending order
-  - Technical Requirements: _TBD_
-- Sort undated tasks last
-  - Acceptance Criteria:
+- Epic: Task Due Dates
+  - Story: Add due date field to task model
+  - Story: Display due date in task list
+- Epic: Task Prioritization
+  - Story: Add priority field to task model
+  - Story: Display priority in task list
+- Epic: Task Filtering
+  - Story: Add filter for all tasks
+  - Story: Add filter for today’s tasks
+  - Story: Add filter for overdue tasks
+- Epic: Local Data Storage
+  - Story: Store tasks locally on device
+- Epic: Overdue Task Highlighting
+  - Story: Visually highlight overdue tasks
+- Epic: Priority Badges
+  - Story: Add color-coded badges for priorities
+- Epic: Task Sorting
+  - Story: Sort tasks by overdue status
+  - Story: Sort tasks by priority
+  - Story: Sort tasks by due date
+  - Story: Sort undated tasks last
     - Tasks without a due date appear after all dated tasks in their group
   - Technical Requirements: _TBD_
