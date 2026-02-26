@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './App.css';
 import {
   List, ListItem, ListItemText, IconButton, Checkbox, Typography, Box, CircularProgress, Paper, Chip
 } from '@mui/material';
@@ -7,6 +8,24 @@ import EditIcon from '@mui/icons-material/Edit';
 import EventIcon from '@mui/icons-material/Event';
 
 function TaskList({ onEdit }) {
+    const handlePriorityChange = async (task, newPriority) => {
+      if (task.priority === newPriority) return;
+      try {
+        await fetch(`/api/tasks/${task.id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title: task.title,
+            description: task.description,
+            due_date: task.due_date,
+            priority: newPriority
+          })
+        });
+        fetchTasks();
+      } catch (err) {
+        setError('Failed to update priority');
+      }
+    };
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -203,6 +222,21 @@ function TaskList({ onEdit }) {
                 gap: 1
               }}
             >
+              {/* Priority Selector */}
+              <Box display="flex" gap={0} mr={1}>
+                {['P1', 'P2', 'P3'].map((p, idx) => (
+                  <button
+                    key={p}
+                    type="button"
+                    className={`priority-btn${task.priority === p ? ' selected' : ''}`}
+                    onClick={() => handlePriorityChange(task, p)}
+                    tabIndex={0}
+                    style={{ marginRight: idx < 2 ? 8 : 0 }}
+                  >
+                    {p}
+                  </button>
+                ))}
+              </Box>
               {task.due_date && (
                 <Chip
                   icon={<EventIcon sx={{ fontSize: 14 }} />}

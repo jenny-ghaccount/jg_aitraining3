@@ -7,6 +7,7 @@ function TaskForm({ onSave, initialTask }) {
   const [title, setTitle] = useState(initialTask?.title || '');
   const [description, setDescription] = useState(initialTask?.description || '');
   const [dueDate, setDueDate] = useState(initialTask?.due_date || '');
+  const [priority, setPriority] = useState('');
   const [error, setError] = useState(null);
 
   // Helper to normalize date string to YYYY-MM-DD format
@@ -43,11 +44,16 @@ function TaskForm({ onSave, initialTask }) {
       setError('Title is required');
       return;
     }
+    if (!priority) {
+      setError('Priority is required');
+      return;
+    }
     setError(null);
-    await onSave({ title, description, due_date: dueDate });
+    await onSave({ title, description, due_date: dueDate, priority });
     setTitle('');
     setDescription('');
     setDueDate('');
+    setPriority('');
   };
 
   return (
@@ -75,6 +81,25 @@ function TaskForm({ onSave, initialTask }) {
         {initialTask ? 'Edit Task' : 'Add Task'}
       </Typography>
       <Box component="form" onSubmit={handleSubmit} display="flex" flexDirection="column" gap={1.5}>
+                {/* Priority Field */}
+                <Box>
+                  <Typography variant="caption" sx={{ fontWeight: 600, mb: 0.5 }}>Priority</Typography>
+                  <Box display="flex" gap={0}>
+                    {['P1', 'P2', 'P3'].map((p, idx) => (
+                      <button
+                        key={p}
+                        type="button"
+                        className={`priority-btn${priority === p ? ' selected' : ''}`}
+                        onClick={() => setPriority(p)}
+                        tabIndex={0}
+                        style={{ marginRight: idx < 2 ? 8 : 0 }}
+                      >
+                        {p}
+                      </button>
+                    ))}
+                  </Box>
+                </Box>
+                {/* End Priority Field */}
         <TextField
           id="task-title"
           label="Task Title"
