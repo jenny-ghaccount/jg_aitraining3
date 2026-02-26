@@ -1,0 +1,65 @@
+- Epic: Task Due Dates
+  - Story: Add due date field to task model
+    - Acceptance Criteria:
+      - Task model includes an optional `dueDate` property in ISO `YYYY-MM-DD` format
+      - Existing tasks remain valid if `dueDate` is not set
+  - Story: Display due date in task list
+    - Acceptance Criteria:
+      - Due date is shown for each task that has one
+      - Tasks without a due date do not display an empty or placeholder value
+
+- Epic: Task Prioritization
+  - Story: Add priority field to task model
+    - Acceptance Criteria:
+      - Task model includes a `priority` property with values `P1`, `P2`, or `P3`
+      - Default priority for new tasks is `P3`
+  - Story: Display priority in task list
+    - Acceptance Criteria:
+      - Priority is shown for each task as a label or badge
+      - Priority is visually distinct for each level
+
+- Epic: Task Filtering
+  - Story: Add filter for all tasks
+    - Acceptance Criteria:
+      - User can view all tasks regardless of due date or completion
+  - Story: Add filter for today’s tasks
+    - Acceptance Criteria:
+      - User can view only tasks due today
+      - Tasks without a due date are excluded from this view
+  - Story: Add filter for overdue tasks
+    - Acceptance Criteria:
+      - User can view only tasks with a due date before today and not completed
+      - Overdue filter excludes completed tasks
+
+- Epic: Local Data Storage
+  - Story: Store tasks locally on device
+    - Acceptance Criteria:
+      - All task data is stored in the browser (e.g., localStorage or IndexedDB)
+      - No backend or external storage is used
+      - Tasks persist after page reload
+
+- Epic: Overdue Task Highlighting
+  - Story: Visually highlight overdue tasks
+    - Acceptance Criteria:
+      - Overdue tasks are visually distinct (e.g., red highlight or border)
+      - Only tasks with a due date before today and not completed are highlighted
+
+- Epic: Priority Badges
+  - Story: Add color-coded badges for priorities
+    - Acceptance Criteria:
+      - P1 tasks have a red badge, P2 orange, P3 gray
+      - Badges are visible in the task list
+
+- Epic: Task Sorting
+  - Story: Sort tasks by overdue status
+    - Acceptance Criteria:
+      - Overdue tasks appear at the top of the list
+  - Story: Sort tasks by priority
+    - Acceptance Criteria:
+      - Within each group (overdue, not overdue), tasks are sorted by priority (P1 first, then P2, then P3)
+  - Story: Sort tasks by due date
+    - Acceptance Criteria:
+      - Within each priority, tasks are sorted by due date in ascending order
+  - Story: Sort undated tasks last
+    - Acceptance Criteria:
+      - Tasks without a due date appear after all dated tasks in their group
